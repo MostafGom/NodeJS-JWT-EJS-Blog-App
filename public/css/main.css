@@ -1,0 +1,17 @@
+.put-in-center{
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.main-bg{
+    background: rgba(0,0,0,0.5);
+    
+    position: relative;
+}
+  
+
+
+  .txt-white{
+      color:#fff;
+  }

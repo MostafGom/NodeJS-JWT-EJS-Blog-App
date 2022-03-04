@@ -1,0 +1,33 @@
+<%- include('./partials/head.ejs') %>
+<%- include('./partials/nav.ejs') %>
+
+<div class="container pt-3">
+<div class="container row">
+  <% if(blogs.length > 0) { %>
+    <% blogs.forEach(blog => {%>
+      <div class="card mb-3 col-md-6" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="/images/default.jpg" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <a href="/blogs/<%= blog._id %>" class="">
+                <h5 class="card-title"><%=blog.title%></h5>
+                <p class="card-text"><%=blog.snippet%></p>
+                <!-- <p class="card-text"><%=blog.body%></p> -->
+              </a>
+                <p class="card-text"><small class="text-muted"><%=blog.createdAt%></small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% }) %>
+  <% } else { %>
+    <h1>There Are No Blog Posts....</h1>
+
+  <% } %>
+</div>
+</div>
+
+<%- include('./partials/footer.ejs') %>

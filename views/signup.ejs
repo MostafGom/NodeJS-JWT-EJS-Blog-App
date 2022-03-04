@@ -1,0 +1,78 @@
+<%- include('./partials/head.ejs') %>
+
+  <div class="put-in-center">
+
+    <div class="blogs-content container card p-3 shadow-lg bg-body rounded" style="max-width: 600px;">
+      <h1 class="mb-4">Create An Account</h1>
+      <form>
+        
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" id="email" placeholder="name@example.com" name="email">
+          <label for="email">Email address</label>
+
+          <div id="emailInvalid" class="invalid-feedback"></div>
+        </div>
+        
+        <div class="form-floating">
+          <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+          <label for="password">Password</label>
+
+          <div id="passInvalid" class="invalid-feedback"></div>
+        </div>
+        
+        <button type="submit" class="btn btn-light mt-4"><span class="badge rounded-pill bg-warning text-dark p-3">Sign Up</span></button>
+      </form>
+      
+    </div>
+    
+  </div>  
+    
+    
+  <script>
+    const form = document.querySelector('form');
+    const emailInvalid = document.querySelector('#emailInvalid');
+    const passInvalid = document.querySelector('#passInvalid');
+
+    form.addEventListener('submit', async(e)=>{
+      e.preventDefault();
+      form.email.classList.remove('is-invalid')
+      form.password.classList.remove('is-invalid')
+      
+      const email = form.email.value;
+      const password = form.password.value;
+
+      try {
+        const res = await fetch('/signup',{
+          method:"POST",
+          body:JSON.stringify({email,password}),
+          headers: {'Content-Type':'application/json'}
+        })
+        const data = await res.json();
+        // console.log(data);
+
+        if(data.user){
+          // console.log(user);
+          location.assign('/');
+        }
+
+        if(data.errors){
+          if(data.errors.email) {
+            form.email.classList.add('is-invalid')
+            emailInvalid.textContent = data.errors.email
+          }
+          if(data.errors.password){
+            form.password.classList.add('is-invalid');
+            passInvalid.textContent = data.errors.password
+          }
+        }
+
+
+      } catch (error) {
+        console.log(error);
+      }
+    })
+  </script>
+    <%- include('./partials/footer.ejs') %>
+
+
+

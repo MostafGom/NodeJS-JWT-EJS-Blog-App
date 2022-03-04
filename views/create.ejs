@@ -1,0 +1,29 @@
+<%- include('./partials/head.ejs') %>
+<%- include('./partials/nav.ejs') %>
+
+  
+    <div class="blogs-content container">
+      <% if (typeof blog_msg !== 'undefined') { %>
+        <div class="alert alert-success" role="alert">
+          <%= blog_msg %>
+        </div>
+      <% } %>
+      <form action="/blogs/create-blog" method="POST">          
+          <div class="mb-3">
+            <label for="titleInput" class="form-label">Title:</label>
+            <input type="text" name="title" class="form-control" id="titleInput" placeholder="title">
+          </div>
+          <div class="mb-3">
+            <label for="snippetInput" class="form-label">Snippet:</label>
+            <input type="text" name="snippet" class="form-control" id="snippetInput" placeholder="snippet">
+          </div>
+          <div class="mb-3">
+            <label for="bodyInput" class="form-label">Body:</label>
+            <textarea class="form-control" name="body" id="bodyInput" rows="6"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-success">Submit</button>
+      </form>
+    </div>
+
+<%- include('./partials/footer.ejs') %>

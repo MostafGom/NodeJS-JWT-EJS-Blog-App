@@ -1,0 +1,8 @@
+
+post http://localhost:3000/signup
+Content-Type: application/json
+
+{
+    "email":"hasowj@ioe.com",
+    "password":"r3dfefweiop38089"   
+}
