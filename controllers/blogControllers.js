@@ -21,7 +21,8 @@ const blog_create_post = (req,res)=>{
 
     blog.save()
     .then((result)=>{
-        res.render('create',{title:'Create',blog_msg:'Blog added - successfully!'})
+        // res.render('create',{title:'Create',blog_msg:'Blog added - successfully!'})
+        res.redirect('/');
     }).catch((err)=>{
         console.log(err);
         res.render('create',{title:'Create',blog_msg:'Error while posting!!!'})
@@ -41,10 +42,12 @@ const blog_single_get = (req,res)=>{
 }
 
 const blog_delete = (req,res)=>{
-    const id = req.params.id;
+    const id = (req.params.id).toString();
+    console.log(typeof id);
     Blog.findByIdAndDelete(id)
     .then((result)=>{
-        res.json({redirect:'/'})
+        // res.json({redirect:'/'})
+        res.redirect('/blogs')
     })
     .catch((err)=>{
         console.log(err);

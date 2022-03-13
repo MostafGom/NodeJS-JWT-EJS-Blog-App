@@ -13,7 +13,7 @@ const {
 router.get('/',blogIndex);
 router.get('/create',requireAuth,blog_create_get);
 router.get('/:id',blog_single_get)
-router.delete('/:id',blog_delete)
+router.get('/delete/:id',blog_delete)
 router.post('/create-blog',blog_create_post)
 
 module.exports = router;

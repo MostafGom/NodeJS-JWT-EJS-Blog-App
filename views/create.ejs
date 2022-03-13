@@ -8,7 +8,22 @@
           <%= blog_msg %>
         </div>
       <% } %>
-      <form action="/blogs/create-blog" method="POST">          
+
+      <% if(user) {%>
+        <p><%= user.email%></p>
+        <% }else{ %>
+          <p>no user</p>
+        <% } %>
+      <form action="/blogs/create-blog" method="POST">  
+
+          <div class="mb-3">
+            <label for="userId" class="form-label"></label>
+            <input type="hidden" value= <%= user.id %> name="userId" class="form-control" id="userId">
+          </div>
+          <div class="mb-3">
+            <label for="userEmail" class="form-label"></label>
+            <input type="hidden" value= <%= user.email %> name="userEmail" class="form-control" id="userEmail">
+          </div>
           <div class="mb-3">
             <label for="titleInput" class="form-label">Title:</label>
             <input type="text" name="title" class="form-control" id="titleInput" placeholder="title">

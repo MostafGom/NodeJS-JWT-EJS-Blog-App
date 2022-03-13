@@ -1,6 +1,31 @@
 <%- include('./partials/head.ejs') %>
 <%- include('./partials/nav.ejs') %>
 
+<% function toReadableDate(diffMs){%>
+  <% var diffDays = Math.floor(diffMs / 86400000); %>
+  <% var diffHrs = Math.floor((diffMs % 86400000) / 3600000); %>
+  <% var diffMins = Math.round(((diffMs % 86400000) % 3600000) / 60000) %>
+
+  <% if (diffDays != 0) {%>
+    <%= diffDays%> days ago
+    <% } else if(diffHrs != 0) {%>
+      <%= diffHrs%> hours ago
+    <% } else {%>
+      <%= diffMins%> mins ago
+    <% } %>
+<!-- 
+  <% if (diffDays != 0) {%>
+    <%= diffDays%> days ago
+  <% } else {%>
+      <% if (diffHrs != 0) {%>
+        <%= diffHrs%> hours ago
+        <% } else {%>
+        <%= diffMins%> mins ago
+    <% } %>
+  <% } %> -->
+
+<%}%>  
+
 <div class="container pt-3">
 <div class="container row">
   <% if(blogs.length > 0) { %>
@@ -15,9 +40,19 @@
               <a href="/blogs/<%= blog._id %>" class="">
                 <h5 class="card-title"><%=blog.title%></h5>
                 <p class="card-text"><%=blog.snippet%></p>
-                <!-- <p class="card-text"><%=blog.body%></p> -->
               </a>
-                <p class="card-text"><small class="text-muted"><%=blog.createdAt%></small></p>
+                <p class="card-text">created by: <%= blog.userEmail%></p>
+                <% if(user.id == blog.userId) {%>
+                  <p class="card-text"><a href="/blogs/delete/<%= blog._id%>">Delete</a></p>
+                  <% }else{ %>
+                    <p class="card-text"></p>
+                  <% } %>
+                <p class="card-text">
+                  <small class="text-muted">
+                    <% toReadableDate(new Date() - blog.createdAt ) %>
+                    
+                  </small>
+                </p>
             </div>
           </div>
         </div>
