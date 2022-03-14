@@ -3,6 +3,8 @@ const morgan = require('morgan');
 const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 const dotenv = require('dotenv');
+const fileUpload = require('express-fileupload');
+
 dotenv.config();
 // const cors = require('cors'); 
 
@@ -25,10 +27,14 @@ mongoose.connect(mongoURI, {useNewUrlParser: true, useUnifiedTopology: true})
 // app.use(cors());
 app.set('view engine','ejs');
 app.use(express.static('public'));
+app.use(express.static('blogsImages'));
+
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(cookieParser());
 app.use(morgan('dev'));
+app.use(fileUpload());
+
 
 app.use(authRouter);
 

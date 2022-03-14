@@ -15,9 +15,12 @@
     <%}%>
   </div>
   <hr>
-    <div class="alert alert-danger d-inline-block" role="alert">
+    <div class="container">
+        <div class="alert alert-danger d-inline-block" role="alert">
           <a class="delete" style="cursor: pointer;" data-docid="<%= blogInfo._id %>">Delete</a>
+         </div>
     </div>
+
 <script>
     const delDoc = document.querySelector('a.delete');
 

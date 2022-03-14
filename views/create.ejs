@@ -2,43 +2,71 @@
 <%- include('./partials/nav.ejs') %>
 
   
-    <div class="blogs-content container">
-      <% if (typeof blog_msg !== 'undefined') { %>
-        <div class="alert alert-success" role="alert">
-          <%= blog_msg %>
-        </div>
-      <% } %>
+    <div class="container mb-3">
+        <div class="alert alert-success d-none" id="success_msg" role="alert">Published Successfully!!</div>
+        <div class="alert alert-error d-none" id="error_msg" role="alert">Error Something Went Wrong!!</div>
 
-      <% if(user) {%>
-        <p><%= user.email%></p>
-        <% }else{ %>
-          <p>no user</p>
-        <% } %>
-      <form action="/blogs/create-blog" method="POST">  
-
-          <div class="mb-3">
+      <form action="/blogs/create-blog" id="blogForm" method="POST" enctype="multipart/form-data">  
+          <div class="mb-3 d-none">
             <label for="userId" class="form-label"></label>
             <input type="hidden" value= <%= user.id %> name="userId" class="form-control" id="userId">
           </div>
-          <div class="mb-3">
+          <div class="mb-3 d-none">
             <label for="userEmail" class="form-label"></label>
-            <input type="hidden" value= <%= user.email %> name="userEmail" class="form-control" id="userEmail">
+            <input required type="hidden" value= <%= user.email %> name="userEmail" class="form-control" id="userEmail">
           </div>
           <div class="mb-3">
             <label for="titleInput" class="form-label">Title:</label>
-            <input type="text" name="title" class="form-control" id="titleInput" placeholder="title">
+            <input required type="text" name="title" class="form-control" id="titleInput" placeholder="title">
           </div>
           <div class="mb-3">
             <label for="snippetInput" class="form-label">Snippet:</label>
-            <input type="text" name="snippet" class="form-control" id="snippetInput" placeholder="snippet">
+            <input required type="text" name="snippet" class="form-control" id="snippetInput" placeholder="snippet">
           </div>
           <div class="mb-3">
             <label for="bodyInput" class="form-label">Body:</label>
-            <textarea class="form-control" name="body" id="bodyInput" rows="6"></textarea>
+            <textarea required class="form-control" name="body" id="bodyInput" rows="6"></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="imgInput" class="form-label">Image:</label>
+            <input required class="form-control" type="file" name="image" id="imgInput">
           </div>
 
           <button type="submit" class="btn btn-success">Submit</button>
       </form>
     </div>
 
+    <script>
+      const form = document.getElementById("blogForm");
+
+      const success_msg = document.getElementById('success_msg')
+      const error_msg = document.getElementById('error_msg')
+
+      form.onsubmit = (e)=>{
+        e.preventDefault();
+        var xhr = new XMLHttpRequest();
+
+        xhr.open("POST","/blogs/create-blog",true);
+
+
+        xhr.onload = (result)=>{
+          console.log(xhr.response);
+          if(xhr.status === 201){
+            success_msg.classList.remove('d-none')
+
+          }else if(xhr.status === 400){
+            error_msg.classList.remove('d-none')
+          }
+        }
+
+        xhr.error = (err)=>{
+          console.log(err);
+        }
+        
+        xhr.send(new FormData(form))
+      }
+    </script>
 <%- include('./partials/footer.ejs') %>
+
+
+
