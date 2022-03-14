@@ -5,13 +5,15 @@
 }
 
 .main-bg{
-    background: rgba(0,0,0,0.5);
-    
+    background: #e0ffff;
     position: relative;
 }
   
 
+.txt-purple{
+    color:#4c394f;
+}
 
-  .txt-white{
-      color:#fff;
-  }
+.bg-magenta{
+    background-color: magenta;
+}

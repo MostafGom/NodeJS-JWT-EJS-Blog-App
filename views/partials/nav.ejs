@@ -1,21 +1,24 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-0">
   <div class="container">
-    <a class="navbar-brand" href="/">Home</a>
+    <a class="navbar-brand" href="/">
+      <img src="/images/logo.gif" alt="logo" width="50" height="54">
+      <span>Blogzy</span>
+    </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav ms-auto">
-        <a class="nav-link" href="/blogs">Blogs</a>
-        <a class="nav-link" href="/blogs/create">Create</a>
-        <a class="nav-link" href="/about">About</a>
+        <a class="nav-link " href="/blogs">Blogs</a>
+        <a class="nav-link " href="/blogs/create">Create</a>
+        <a class="nav-link " href="/about">About</a>
         <% if(user) {%>
         <span class="nav-link active" aria-current="page">Welcome, <%= user.email%></span>
         <!-- <a class="nav-link active" aria-current="page" href="#">Welcome, <%= user.email%></a> -->
         <a class="nav-link" href="/logout">Log Out</a>
         <% }else{ %>
-        <a class="nav-link" href="/login"><span class="badge rounded-pill bg-primary text-dark p-2">Log In</span></a>
-        <a class="nav-link" href="/signup"><span class="badge rounded-pill bg-warning text-dark p-2">Sign Up</span></a>
+        <a class="nav-link" href="/login"><span class="badge rounded-pill bg-primary text-white p-2">Log In</span></a>
+        <a class="nav-link" href="/signup"><span class="badge rounded-pill bg-danger text-white p-2">Sign Up</span></a>
         <% } %>
 
       </div>

@@ -3,6 +3,7 @@
 
   <div class="container">
     <% if (blogInfo !== 'undefined') { %>
+        <img src="/<%= blogInfo.image%>" alt="" class="w-50">
         <h1><%=blogInfo.title%></h1>
         <p><%=blogInfo.body%></p>
     <%} else { %>
@@ -15,11 +16,15 @@
     <%}%>
   </div>
   <hr>
-    <div class="container">
-        <div class="alert alert-danger d-inline-block" role="alert">
-          <a class="delete" style="cursor: pointer;" data-docid="<%= blogInfo._id %>">Delete</a>
-         </div>
-    </div>
+  <% if(user._id == blogInfo.userId){ %>
+      <div class="container">
+          <div class="alert alert-danger d-inline-block p-2" role="alert">
+                <a class="delete" style="cursor: pointer;" data-docid="<%= blogInfo._id %>">
+                    <img src="/images/del-icon.png" alt="delete icon" style="width: 25px;">
+                </a>
+            </div>
+        </div>
+    <%}%>
 
 <script>
     const delDoc = document.querySelector('a.delete');
