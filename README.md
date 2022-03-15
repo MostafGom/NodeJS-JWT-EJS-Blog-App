@@ -1,7 +1,7 @@
 # Live Link On Heroku:
 # https://blogzy-node.herokuapp.com/
 
-# ![Screenshot] (https://github.com/MostafGom/NodeJS-JWT-EJS-Blog-App/blob/main/Screenshot.png?raw=true "Screenshot")
+![Screenshot] (https://github.com/MostafGom/NodeJS-JWT-EJS-Blog-App/blob/main/Screenshot.png?raw=true "Screenshot")
 
 
 ### provide your own .env variables 
