@@ -6,6 +6,9 @@
 
 .main-bg{
     background: #e0ffff;
+    background: url('/images/home-bg-img.jpg');
+    background-size: cover;
+    background-position: center;
     position: relative;
 }
   

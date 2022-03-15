@@ -6,3 +6,11 @@
 #### jwt auth.
 #### ejs server side rendering.
 #### protected routes.
+
+## Credits:
+### Background Image: [Photo by Johannes Plenio from Pexels](https://www.pexels.com/photo/gray-and-white-wallpaper-1103970/)
+
+### Lottie animations are from [Lottiefiles.com](https://lottiefiles.com)
+
+### Lottie in Home page section:  Tech Blog, Developer :- Anstsmn, Edit :- Truecosmos
+### Lottie in navbar:  Jorge Cesar
