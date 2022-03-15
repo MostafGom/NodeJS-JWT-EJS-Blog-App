@@ -1,3 +1,9 @@
+# Live Link On Heroku:
+# https://blogzy-node.herokuapp.com/
+
+# ![Screenshot] (./Screenshot.png?raw=true "Screenshot")
+
+
 ### provide your own .env variables 
 #### Mongodb atlas uri.
 #### secret key for jwt authentication.
